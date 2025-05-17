@@ -55,3 +55,25 @@ sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{});
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
 sr.reveal('.home__social-icon',{ interval: 200}); 
 sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+
+/*=============== DARK MODE TOGGLE ===============*/
+const icon = document.getElementById('dark-mode-icon');
+
+// Foydalanuvchining oldingi tanlovi bo'yicha dark mode ni yoqish
+if (localStorage.getItem('mode') === 'dark') {
+    document.body.classList.add('dark-mode');
+    icon.classList.replace('bx-moon', 'bx-sun');
+}
+
+icon.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    if (document.body.classList.contains('dark-mode')) {
+        icon.classList.replace('bx-moon', 'bx-sun');
+        localStorage.setItem('mode', 'dark');
+    } else {
+        icon.classList.replace('bx-sun', 'bx-moon');
+        localStorage.setItem('mode', 'light');
+    }
+});
+
